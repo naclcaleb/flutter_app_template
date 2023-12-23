@@ -11,7 +11,7 @@ class BaseTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: TabBar(currentIndex: navigationShell.currentIndex, navigationShell: navigationShell,),
+      bottomNavigationBar: ProductTabBar(currentIndex: navigationShell.currentIndex, navigationShell: navigationShell,),
       body: navigationShell,
     );
   }

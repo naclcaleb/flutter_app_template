@@ -80,18 +80,18 @@ class TabBarFab extends StatelessWidget {
   }
 }
 
-class TabBar extends StatefulWidget {
+class ProductTabBar extends StatefulWidget {
 
   final int currentIndex;
   final StatefulNavigationShell navigationShell;
 
-  const TabBar({super.key, this.currentIndex = 0, required this.navigationShell});
+  const ProductTabBar({super.key, this.currentIndex = 0, required this.navigationShell});
 
   @override
-  State<TabBar> createState() => _TabBarState();
+  State<ProductTabBar> createState() => _ProductTabBarState();
 }
 
-class _TabBarState extends State<TabBar> {
+class _ProductTabBarState extends State<ProductTabBar> {
 
   final Map<String, int> tabToIndexMap = {
     'home': 0,

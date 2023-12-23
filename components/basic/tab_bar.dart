@@ -84,8 +84,9 @@ class ProductTabBar extends StatefulWidget {
 
   final int currentIndex;
   final StatefulNavigationShell navigationShell;
+  final bool hasFab;
 
-  const ProductTabBar({super.key, this.currentIndex = 0, required this.navigationShell});
+  const ProductTabBar({super.key, this.currentIndex = 0, required this.navigationShell, this.hasFab = false});
 
   @override
   State<ProductTabBar> createState() => _ProductTabBarState();
@@ -94,20 +95,16 @@ class ProductTabBar extends StatefulWidget {
 class _ProductTabBarState extends State<ProductTabBar> {
 
   final Map<String, int> tabToIndexMap = {
-    'home': 0,
-    'profile': 1,
-    'groups': 2,
-    'search': 3
+    'tab1': 0,
+    'tab2': 1
   };
 
   List<TabDefinition> leftItems = [
-    const TabDefinition(label: 'Home', value: 'home', icon: FeatherIcons.home),
-    const TabDefinition(label: 'Profile', value: 'profile', icon: FeatherIcons.user),
+    const TabDefinition(label: 'Tab 1', value: 'tab1', icon: FeatherIcons.home),
   ];
 
   List<TabDefinition> rightItems = [
-    const TabDefinition(label: 'Groups', value: 'groups', icon: FeatherIcons.grid),
-    const TabDefinition(label: 'Search', value: 'search', icon: FeatherIcons.search),
+    const TabDefinition(label: 'Tab 2', value: 'tab2', icon: FeatherIcons.book),
   ];
 
   void onFabPressed() {
@@ -139,7 +136,7 @@ class _ProductTabBarState extends State<ProductTabBar> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ...leftItems.map((tab) => Expanded(child: TabItem(tab: tab, isActive: tabToIndexMap[tab.value] == widget.currentIndex, onTap: () => onTabPressed(tab.value),))).toList(),
-              Expanded(child: TabBarFab(onTap: onFabPressed,)),
+              if (widget.hasFab) Expanded(child: TabBarFab(onTap: onFabPressed,)),
               ...rightItems.map((tab) => Expanded(child: TabItem(tab: tab, isActive: tabToIndexMap[tab.value] == widget.currentIndex, onTap: () => onTabPressed(tab.value)))).toList()
             ],
           ),

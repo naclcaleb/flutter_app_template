@@ -34,7 +34,7 @@ class MediaService {
     //Open the image picker
     final ImagePicker picker = ImagePicker();
     
-    bool? usingCamera = await SophiaAlert.showPlatformDialog(context, 'Choose a file source', 'Would you like to select from your photo gallery or take a new picture?', [
+    bool? usingCamera = await SystemAlert.showPlatformDialog(context, 'Choose a file source', 'Would you like to select from your photo gallery or take a new picture?', [
       const AlertAction(buttonText: 'Camera', returnValue: true, type: AlertActionType.normal),
       const AlertAction(buttonText: 'Gallery', returnValue: false, type: AlertActionType.normal),
     ]);
